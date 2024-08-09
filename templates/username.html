@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    register
+{% endblock %}
+{% block main %}
+    <form>
+        <input class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+        <p style="color: red;">Must provide username</p>
+        <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+        <p style="color: red;">Must provide password</p>
+        <input class="form-control mx-auto w-auto" name="confirmation" type="password" placeholder="Confirmation">
+        <p style="color: red;">Must provide confirmation</p>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+{% endblock %}
+

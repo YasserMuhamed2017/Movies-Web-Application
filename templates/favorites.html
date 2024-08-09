@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    favorites
+{% endblock %}
+{% block main %}
+<table>
+    <tr>
+        <td>Title</td>
+        <td>Publish Year</td>
+        <td>Movie Director</td>
+        <td>Number of voters</td>
+        <td>Movie rating</td>
+    </tr>
+    <tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['title'] }}</td>
+            <td>{{ movie['year'] }}</td>
+            <td>{{ movie['director'] }}</td>
+            <td>{{ movie['votes'] }}</td>
+            <td>{{ movie['rating'] }}</td>
+            <form action="/delete" method="post">
+                <td><button class="btn btn-primary" name="remove" type="submit" value="{{ movie['title'] }}">Remove movie</button></td>
+            </form>
+        </tr>
+        {% endfor %}
+    </tr>
+</table>
+{% endblock %}

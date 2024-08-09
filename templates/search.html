@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    search
+{% endblock %}
+{% block main %}
+{% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+{% endif %}<br>
+{% if message %}
+    <p style="color: blue; font-size: 20px; font-family: Arial;">{{ message }}</p>
+{% endif %}
+<form action="/search" method="post">
+    <div class="input-group">
+        <input class="form-control mx-auto w-auto" type="search" name="q" placeholder="Search for a movie title...">
+        <input class="btn btn-primary" type="submit" value="Go">
+    </div>
+</form>
+{% if rows|length != 0 %}
+<div class="form-control mx-auto w-auto">
+    <ul>
+        {% for row in rows %}
+            <div class="movie-item">
+                <li>{{ row["title"] }}</li>
+                <form action="/insert" method="post">
+                    <button class="btn btn-primary" name="add" type="submit" value="{{ row['title'] }}">Add movie</button>
+                </form>
+            </div>
+            <br>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+
